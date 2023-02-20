@@ -55,13 +55,13 @@ for i = 1:populationSize/2
 %     [offspring(2*i-1,:), offspring(2*i,:)] = your_recombination_operator(population(parentIndexes(1),:), population(parentIndexes(2),:), recombination_weight);
     k = randi([1, dimension]);
 %     [population(parentIndexes(1),1:k), population(parentIndexes(1),k+1:dimension)]
-    population(parentIndexes(1),k+1:dimension)*recombination_weight +population(parentIndexes(2),k+1:dimension)*(1-recombination_weight);
-    p1 = population(parentIndexes(1),1:k);
-    p1_2 = population(parentIndexes(1),k+1:dimension)*recombination_weight + population(parentIndexes(2),k+1:dimension)*(1-recombination_weight);
-    p2 = population(parentIndexes(2),1:k);
-    p2_2 = population(parentIndexes(2),k+1:dimension)*recombination_weight + population(parentIndexes(1),k+1:dimension)*(1-recombination_weight);
-    offspring(2*i-1,:) = [p1, p1_2];
-    offspring(2*i,:) = [p2, p2_2];
+    population(parentIndexes(1),k+1:dimension)*recombination_weight +population(parentIndexes(2),k+1:dimension)*(1-recombination_weight)
+    p1 = population(parentIndexes(1),1:k)
+    p1_2 = population(parentIndexes(1),k+1:dimension)*recombination_weight + population(parentIndexes(2),k+1:dimension)*(1-recombination_weight)
+    p2 = population(parentIndexes(2),1:k)
+    p2_2 = population(parentIndexes(2),k+1:dimension)*recombination_weight + population(parentIndexes(1),k+1:dimension)*(1-recombination_weight)
+    offspring(2*i-1,:) = [p1, p1_2]
+    offspring(2*i,:) = [p2, p2_2]
 %     offspring(2*i-1,:)=[population(parentIndexes(1),1:k), population(parentIndexes(1),k+1:dimension)*recombination_weight +population(parentIndexes(2),k+1:dimension)*(1-recombination_weight)];
 %     offspring(2*i,:)=[population(parentIndexes(2),1:k), population(parentIndexes(2),k+1:dimension)*recombination_weight + population(parentIndexes(1),k+1:dimension)*(1-recombination_weight)];
 end
@@ -73,13 +73,13 @@ for i = 1:populationSize
 %     offspring(i,:) = your_mutation_operator(offspring(i,:),mutation_rate, lower_bound, upper_bound);
     for j = 1:dimension
        if rand < mutation_rate
-          offspring(i, j) = offspring(i, j) +  Cauchy_PDF(rand, 0, 1);
+          offspring(i, j) = offspring(i, j) +  Cauchy_PDF(rand, 0, 1)
           if offspring(i,j)<=lower_bound(i)
-              offspring(i,j) = lower_bound(1);
+              offspring(i,j) = lower_bound(1)
           end
           
             if offspring(i,j)>=upper_bound(i)
-              offspring(i,j) = upper_bound(1);
+              offspring(i,j) = upper_bound(1)
           end
        end
     end
